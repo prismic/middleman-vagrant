@@ -5,12 +5,14 @@
 *~
 *.lock
 *.swp
-.log
 .DS_Store
 .DS_Store?
 .Thumbs.db
 ehthumbs.db
+
+# project
 .vagrant
+middleman.log
 
 # Ruby
 *.gem
