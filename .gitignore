@@ -1,3 +1,18 @@
+# OS
+._*
+.Spotlight-V100
+.Trashes
+*~
+*.lock
+*.swp
+.log
+.DS_Store
+.DS_Store?
+.Thumbs.db
+ehthumbs.db
+.vagrant
+
+# Ruby
 *.gem
 *.rbc
 .bundle
