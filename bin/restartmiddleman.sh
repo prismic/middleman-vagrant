@@ -1,0 +1,1 @@
+vagrant ssh -c "kill $(ps aux | grep '[m]iddleman server' | awk '{print $2}'); nohup middleman server >> /vagrant/middleman.log 2>&1 &"

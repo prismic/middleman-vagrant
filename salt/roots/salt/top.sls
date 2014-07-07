@@ -1,0 +1,6 @@
+base:
+  '*':
+    - essentials
+    - ssh
+    - middleman
+
