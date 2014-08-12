@@ -1,15 +1,15 @@
 middleman:
   gem.installed:
-    - user: vagrant
+    - user: root
     - names:
       - middleman
-      
+
 # run the middleman init command only if the config.rb file doesn't exist
 create-project:  
   cmd.run:
     - user: vagrant
     - name: 'cd /vagrant/src; middleman init . --template={{ pillar['middleman']['template'] }} --css-dir={{ pillar['middleman']['css_path'] }} --js-dir={{ pillar['middleman']['js_path'] }} --images-dir={{ pillar['middleman']['images_path'] }}'
-    - onlyif: 'test ! -e /vagrant/src/config.rb'
+    - onlyif: 'test ! -e /vagrant/project/config.rb'
     - require:
       - gem: middleman
       
@@ -17,8 +17,8 @@ create-project:
 modify-gemfile:
   cmd.run:
     - user: vagrant
-    - name: 'grep -q "gem \"therubyracer\"" /vagrant/src/Gemfile || sed "$ a\gem \"therubyracer\"" -i /vagrant/src/Gemfile'
-    - onlyif: 'test -e /vagrant/src/Gemfile'
+    - name: 'grep -q "gem \"therubyracer\"" /vagrant/project/Gemfile || sed "$ a\gem \"therubyracer\"" -i /vagrant/project/Gemfile'
+    - onlyif: 'test -e /vagrant/project/Gemfile'
     - require:
       - cmd: create-project
       
@@ -27,7 +27,7 @@ modify-gemfile:
 install-gems:
   cmd.run:
     - user: vagrant
-    - name: 'cd /vagrant/src; bundle install'
-    - onlyif: 'test ! -e /vagrant/src/Gemfile.lock'
+    - name: 'cd /vagrant/project; bundle install'
+    - onlyif: 'test ! -e /vagrant/project/Gemfile.lock'
     - require:
       - cmd: modify-gemfile

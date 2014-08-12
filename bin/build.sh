@@ -1,2 +1,2 @@
 # generating site...
-vagrant ssh -c "cd /vagrant/src; bundle exec middleman build &> middleman.log"
+vagrant ssh -c "cd /vagrant/project; bundle exec middleman build &> middleman.log"
